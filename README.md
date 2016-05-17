@@ -13,12 +13,10 @@
 Данные о проголосовавших накапливаются в базе данных. Дважды проголосовать нельзя. 
 По окончании периода голосования система выдает результат (5 кандидатов с наибольшим колвом голосов).
 </p>
-<p align="justify">
- При запуске RMI версии изпользовать командную строку:
-  <br>
-  для клиента: "-Djava.security.policy=client.policy"
-  <br>
-  для сервера: "-Djava.security.policy=server.policy"
-  <br>
-  в случае ошибки при запуске: "-Djava.security.policy=client.policy"
-</p>
+<dl>
+<dt>При запуске RMI версии изпользовать следующую командную строку
+  <dd> для клиента: "-Djava.security.policy=client.policy"
+  <dd> для сервера: "-Djava.security.policy=server.policy"
+  <dd> в случае ошибки при запуске: "-Djava.security.policy=no.policy"
+</dl>
+
