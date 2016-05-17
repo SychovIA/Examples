@@ -1,0 +1,10 @@
+grant {
+	permission java.net.SocketPermission "127.0.0.1:*", "connect, resolve";
+	permission java.net.SocketPermission "127.0.0.1:*", "accept";
+	permission java.awt.AWTPermission "accessSystemTray";
+	permission java.awt.AWTPermission "showWindowWithoutWarningBanner";
+	permission java.io.FilePermission "images/IconRed.png", "read";
+	permission java.io.FilePermission "images/IconGreen.png", "read";
+	permission java.util.PropertyPermission "*", "read";
+
+};
