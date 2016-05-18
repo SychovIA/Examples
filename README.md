@@ -14,9 +14,9 @@
 По окончании периода голосования система выдает результат (5 кандидатов с наибольшим колвом голосов).
 </p>
 <dl>
-<dt>При запуске RMI версии изпользовать следующую командную строку
-  <dd> для клиента: "-Djava.security.policy=client.policy"
-  <dd> для сервера: "-Djava.security.policy=server.policy"
-  <dd> в случае ошибки при запуске: "-Djava.security.policy=no.policy"
+<dt>При запуске RMI версии изпользовать VM Arguments:
+  <dd> для клиента "-Djava.security.policy=client.policy"
+  <dd> для сервера "-Djava.security.policy=server.policy"
+  <dd> в случае ошибки при запуске "-Djava.security.policy=no.policy"
 </dl>
 
