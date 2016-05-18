@@ -2,9 +2,9 @@
 <h3 align="center"> Программа для голосования "Voting"</h3>
 <p align="justify">
 &nbsp;&nbsp;&nbsp;&nbsp;Пример простой программы. За основу взят процесс голосования. <br>Имеется 3 реализации программы: <ul>
-<li> прямое взаимодействие Java приложение - SQL;
-<li> Java client - Java server - SQL;
-<li> Java RMIclient - Java RMIserver - SQL;
+<li> прямое взаимодействие Java приложение - MySQL;
+<li> Java client - Java server - MySQL;
+<li> Java RMIclient - Java RMIserver - MySQL;
 </ul>
 </p>
 <p align="justify">
