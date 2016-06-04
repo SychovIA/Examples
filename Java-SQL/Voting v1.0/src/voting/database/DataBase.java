@@ -25,6 +25,7 @@ public class DataBase {
 	private static Statement create;
 	private static PreparedStatement pStatement;
 	
+	private DataBase(){}
 	
 	// получение соединения с СУБД
 public static Connection getConnection() {
@@ -87,12 +88,12 @@ public static Connection getConnection() {
         	
         try {
 				create.close();
-			} catch (SQLException e) {}
+			} catch (SQLException e) {e.printStackTrace();}
         }
         if (connection != null) {
             try {
             	connection.close();
-			} catch (SQLException e) {}
+			} catch (SQLException e) {e.printStackTrace();}
         }
 	}
       return b;
@@ -129,12 +130,12 @@ public static Connection getConnection() {
 			 if (pStatement != null) {
 		        try {
 		        	pStatement.close();
-					} catch (SQLException e) {}
+					} catch (SQLException e) {e.printStackTrace();}
 			 }
 	        if (connection != null) {
 	            try {
 	            	connection.close();
-				} catch (SQLException e) {}
+				} catch (SQLException e) {e.printStackTrace();}
 	        }
 		}
 	
@@ -170,17 +171,17 @@ public static Connection getConnection() {
 			return b;
 		
 			
-		} catch (Exception e){System.out.println(e.getMessage());
+		} catch (Exception e){e.printStackTrace();
 		} finally {
 	        if (pStatement != null) {
 	        try {
 	        	pStatement.close();
-				} catch (SQLException e) {}
+				} catch (SQLException e) {e.printStackTrace();}
 	        }
 	        if (connection != null) {
 	            try {
 	            	connection.close();
-				} catch (SQLException e) {}
+				} catch (SQLException e) {e.printStackTrace();}
 	        }
 		}
 		return b;
@@ -204,18 +205,18 @@ public static Connection getConnection() {
 			pStatement.setString(1, lName + " "+ fName);
 			pStatement.executeUpdate();
 			
-		} catch (Exception e){System.out.println(e.getMessage());
+		} catch (Exception e){e.printStackTrace();
 		} finally {
 	        if (pStatement != null) {
 	        	
 	        try {
 	        	pStatement.close();
-				} catch (SQLException e) {}
+				} catch (SQLException e) {e.printStackTrace();}
 	        }
 	        if (connection != null) {
 	            try {
 	            	connection.close();
-				} catch (SQLException e) {}
+				} catch (SQLException e) {e.printStackTrace();}
 	        }
 		}
 		
@@ -238,18 +239,18 @@ public static Connection getConnection() {
 		        	candidats.add(rs.getString("candidat"));
 		        }
 		        return candidats;
-		} catch (Exception e){System.out.println(e.getMessage());
+		} catch (Exception e){e.printStackTrace();
 		} finally {
 			if (create != null) {
 	        	
 		        try {
 						create.close();
-					} catch (SQLException e) {}
+					} catch (SQLException e) {e.printStackTrace();}
 		        }
 	        if (connection != null) {
 	            try {
 	            	connection.close();
-				} catch (SQLException e) {}
+				} catch (SQLException e) {e.printStackTrace();}
 	        }
 		}
 		return null;
@@ -272,12 +273,12 @@ public static Connection getConnection() {
 	        	
 	        try {
 	        	pStatement.close();
-				} catch (SQLException e) {}
+				} catch (SQLException e) {e.printStackTrace();}
 	        }
 	        if (connection != null) {
 	            try {
 	            	connection.close();
-				} catch (SQLException e) {}
+				} catch (SQLException e) {e.printStackTrace();}
 	        }
 		}
 		
@@ -298,12 +299,12 @@ public static Connection getConnection() {
 			if (create != null) {
 		        try {
 						create.close();
-					} catch (SQLException e) {}
+					} catch (SQLException e) {e.printStackTrace();}
 		        }
 	        if (connection != null) {
 	            try {
 	            	connection.close();
-				} catch (SQLException e) {}
+				} catch (SQLException e) {e.printStackTrace();}
 	        }
 		}
 		
@@ -326,18 +327,18 @@ public static Connection getConnection() {
 			
 			
 			
-		} catch (Exception e){System.out.println(e.getMessage());
+		} catch (Exception e){e.printStackTrace();
 		} finally {
 	        if (pStatement != null) {
 	        	
 	        try {
 	        	pStatement.close();
-				} catch (SQLException e) {}
+				} catch (SQLException e) {e.printStackTrace();}
 	        }
 	        if (connection != null) {
 	            try {
 	            	connection.close();
-				} catch (SQLException e) {}
+				} catch (SQLException e) {e.printStackTrace();}
 	        }
 		}
 		
@@ -355,18 +356,18 @@ public static Connection getConnection() {
 			
 			
 			
-		} catch (Exception e){System.out.println(e.getMessage());
+		} catch (Exception e){e.printStackTrace();
 		} finally {
 			if (create != null) {
 	        	
 		        try {
 						create.close();
-					} catch (SQLException e) {}
+					} catch (SQLException e) {e.printStackTrace();}
 		        }
 	        if (connection != null) {
 	            try {
 	            	connection.close();
-				} catch (SQLException e) {}
+				} catch (SQLException e) {e.printStackTrace();}
 	        }
 		}
 		
@@ -398,12 +399,12 @@ public static Connection getConnection() {
 	        	
 		        try {
 						create.close();
-					} catch (SQLException e) {}
+					} catch (SQLException e) {e.printStackTrace();}
 		        }
 	        if (connection != null) {
 	            try {
 	            	connection.close();
-				} catch (SQLException e) {}
+				} catch (SQLException e) {e.printStackTrace();}
 	        }
 		}
 		
@@ -432,12 +433,12 @@ public static Connection getConnection() {
 	        	
 		        try {
 						create.close();
-					} catch (SQLException e) {}
+					} catch (SQLException e) {e.printStackTrace();}
 		        }
 	        if (connection != null) {
 	            try {
 	            	connection.close();
-				} catch (SQLException e) {}
+				} catch (SQLException e) {e.printStackTrace();}
 	        }
 		}
 		
@@ -482,18 +483,18 @@ public static Connection getConnection() {
 	        JOptionPane.showMessageDialog(null, "Спасибо за ваш голос!", "Голосование", JOptionPane.INFORMATION_MESSAGE);
 	        }
 			
-		} catch (Exception e){System.out.println(e.getMessage());
+		} catch (Exception e){e.printStackTrace();
 		} finally {
 	        if (pStatement != null) {
 	        	
 	        try {
 	        	pStatement.close();
-				} catch (SQLException e) {}
+				} catch (SQLException e) {e.printStackTrace();}
 	        }
 	        if (connection != null) {
 	            try {
 	            	connection.close();
-				} catch (SQLException e) {}
+				} catch (SQLException e) {e.printStackTrace();}
 	        }
 		}
 		
@@ -524,18 +525,18 @@ public static Connection getConnection() {
 		
 		
 			
-		} catch (Exception e){System.out.println(e.getMessage());
+		} catch (Exception e){e.printStackTrace();
 		} finally {
 	        if (pStatement != null) {
 	        	
 	        try {
 	        	pStatement.close();
-				} catch (SQLException e) {}
+				} catch (SQLException e) {e.printStackTrace();}
 	        }
 	        if (connection != null) {
 	            try {
 	            	connection.close();
-				} catch (SQLException e) {}
+				} catch (SQLException e) {e.printStackTrace();}
 	        }
 		}
 	}
@@ -563,18 +564,18 @@ public static Connection getConnection() {
 			}
 			
 			
-		} catch (Exception e){System.out.println(e);
+		} catch (Exception e){e.printStackTrace();
 		} finally {
 	        if (create != null) {
 	        	
 	        try {
 					create.close();
-				} catch (SQLException e) {}
+				} catch (SQLException e) {e.printStackTrace();}
 	        }
 	        if (connection != null) {
 	            try {
 	            	connection.close();
-				} catch (SQLException e) {}
+				} catch (SQLException e) {e.printStackTrace();}
 	        }
 		}
 		return rezults;
@@ -592,18 +593,18 @@ public static Connection getConnection() {
 			create = connection.createStatement();
 			create.executeUpdate("UPDATE users  SET is_voted = '0'");
 			
-		} catch (Exception e){System.out.println(e.getMessage());
+		} catch (Exception e){e.printStackTrace();
 		} finally {
 			if (create != null) {
 	        	
 		        try {
 						create.close();
-					} catch (SQLException e) {}
+					} catch (SQLException e) {e.printStackTrace();}
 		        }
 	        if (connection != null) {
 	            try {
 	            	connection.close();
-				} catch (SQLException e) {}
+				} catch (SQLException e) {e.printStackTrace();}
 	        }
 		}
 		
@@ -620,18 +621,18 @@ public static Connection getConnection() {
 			create = connection.createStatement();
 			create.executeUpdate("UPDATE candidats  SET vote = '0'");
 			
-		} catch (Exception e){System.out.println(e.getMessage());
+		} catch (Exception e){e.printStackTrace();
 		} finally {
 			if (create != null) {
 	        	
 		        try {
 						create.close();
-					} catch (SQLException e) {}
+					} catch (SQLException e) {e.printStackTrace();}
 		        }
 	        if (connection != null) {
 	            try {
 	            	connection.close();
-				} catch (SQLException e) {}
+				} catch (SQLException e) {e.printStackTrace();}
 	        }
 		}
 	}

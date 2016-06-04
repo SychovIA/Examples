@@ -13,6 +13,7 @@ public class UserData {
 	private static String category;
 	private static String login;
 	
+	private UserData(){};
 	
 	public static String getUser() {
 		return user;

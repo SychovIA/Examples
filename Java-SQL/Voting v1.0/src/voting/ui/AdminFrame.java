@@ -131,7 +131,7 @@ public class AdminFrame extends JFrame implements Runnable{
 			
 		try {
 			Thread.sleep(1000); // периодичность потока 1 секунда
-		} catch (InterruptedException e) {}
+		} catch (InterruptedException e) {e.printStackTrace();}
 		}
 	}
 	
