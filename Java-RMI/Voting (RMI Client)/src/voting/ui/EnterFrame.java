@@ -65,7 +65,9 @@ public class EnterFrame extends JFrame{
 	try {
 		((AbstractDocument)(loginField.getDocument())).setDocumentFilter(
 				new MyDocumentFilter(20));
-	} catch (BadLocationException e) {}
+	} catch (BadLocationException e) {
+		e.printStackTrace();
+	}
 	box1.add(loginLabel);
 	box1.add(Box.createHorizontalStrut(6));
 	box1.add(loginField);

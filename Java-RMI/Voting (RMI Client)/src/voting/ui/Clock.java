@@ -25,7 +25,9 @@ public class Clock extends JLabel implements Runnable {
 			super.setText("Дата: " + simpleDate.format(date) + "   Время: " + simpleTime.format(date));
 			try {
 				Thread.sleep(1000);
-			} catch (InterruptedException e) {}
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 		}
 
 	}

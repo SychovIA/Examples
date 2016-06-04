@@ -174,6 +174,7 @@ public class ServerConection implements Runnable{
 				
 				client.close();
 			} catch (IOException e) {
+				e.printStackTrace();
 				ServerFrame.addMessage(e.getMessage());
 			}
 			

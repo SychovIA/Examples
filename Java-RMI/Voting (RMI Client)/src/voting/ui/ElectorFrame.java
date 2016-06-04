@@ -133,7 +133,9 @@ public class ElectorFrame extends JFrame implements Runnable{
 			
 		try {
 			Thread.sleep(30000); // периодичность потока 30 секунд
-		} catch (InterruptedException e) {}
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		}
 	}
 	

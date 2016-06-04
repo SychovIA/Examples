@@ -152,14 +152,17 @@ public class ServerFrame extends JFrame implements ActionListener{
 		// запуск сервера
 		if(!running){
 			addMessage("Connecting to Database...");
-			if (DataBaseImpl.createTable()){
-				addMessage("Database connected!");
-				addMessage("RMI server starting... ");	
+				
 				
 				try {
+					DataBaseImpl dataBase = new DataBaseImpl();
+					if (dataBase.createTable()){
+						addMessage("Database connected!");
+						addMessage("RMI server starting... ");
+					} else
+						return;
 					reg = LocateRegistry.createRegistry(1099);
 					addMessage("RMI registry created!");
-					DataBaseImpl dataBase = new DataBaseImpl();
 					Naming.rebind("rmi://localhost:1099/DataService", dataBase);
 					configButton.setEnabled(false);
 					running = true;
@@ -167,8 +170,7 @@ public class ServerFrame extends JFrame implements ActionListener{
 				} catch (RemoteException | MalformedURLException e) {
 					addMessage("ERROR: RMI server exeption: " + e);
 				}
-			} else
-			return;
+			
 			
 		}else{
 			JOptionPane.showMessageDialog(null, "Сервер уже запущен!", "Сервер", JOptionPane.INFORMATION_MESSAGE);

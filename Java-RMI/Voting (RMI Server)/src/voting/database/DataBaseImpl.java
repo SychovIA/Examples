@@ -27,9 +27,9 @@ public class DataBaseImpl extends UnicastRemoteObject implements DataBaseService
 	private static String userName;
 	private static char [] password;
 	private static String db;
-	private static Connection connection;
-	private static Statement create;
-	private static PreparedStatement pStatement;
+	private Connection connection;
+	private Statement create;
+	private PreparedStatement pStatement;
 	private final static int FALSE = 0;
 	private final static int OK = 1;
 	private final static int ERROR = 2;
@@ -45,7 +45,7 @@ public class DataBaseImpl extends UnicastRemoteObject implements DataBaseService
 	
 	
 	// Соединение с БД
-	private static Connection getConnection() {
+	private Connection getConnection() {
 		
 		
 		try{
@@ -55,6 +55,7 @@ public class DataBaseImpl extends UnicastRemoteObject implements DataBaseService
 			Connection conn = DriverManager.getConnection(url, userName, new  String (password));
 			return conn;
 		} catch(Exception e){
+			e.printStackTrace();
 			ServerFrame.addMessage("ERROR: Connecting to Database FALSE!");
 		}
 			
@@ -63,7 +64,7 @@ public class DataBaseImpl extends UnicastRemoteObject implements DataBaseService
 	
 	
 	//Создание таблиц
-		public static boolean  createTable() {
+		public boolean  createTable() {
 			
 			boolean b = false;
 			
@@ -102,6 +103,7 @@ public class DataBaseImpl extends UnicastRemoteObject implements DataBaseService
 				b = true;
 				
 			} catch (Exception e) {
+				e.printStackTrace();
 				ServerFrame.addMessage("ERROR: Tables not created  on Database!");
 			}
 			finally {
@@ -109,12 +111,12 @@ public class DataBaseImpl extends UnicastRemoteObject implements DataBaseService
 			        	
 				        try {
 								create.close();
-						} catch (SQLException e) {}
+						} catch (SQLException e) {e.printStackTrace();}
 				  }
 				  if (connection != null) {
 				        try {
 				            	connection.close();
-						} catch (SQLException e) {}
+						} catch (SQLException e) {e.printStackTrace();}
 				  }
 			}
 		      return b;
@@ -155,12 +157,12 @@ public class DataBaseImpl extends UnicastRemoteObject implements DataBaseService
 			if (pStatement != null) {
 		        try {
 		        	pStatement.close();
-					} catch (SQLException e) {}
+					} catch (SQLException e) {e.printStackTrace();}
 			 }
 	        if (connection != null) {
 	            try {
 	            	connection.close();
-				} catch (SQLException e) {}
+				} catch (SQLException e) {e.printStackTrace();}
 	        }
 		}
 		
@@ -187,17 +189,19 @@ public class DataBaseImpl extends UnicastRemoteObject implements DataBaseService
 				
 	
 		
-			} catch (Exception e){i = ERROR; 
+			} catch (Exception e){
+				e.printStackTrace();
+				i = ERROR; 
 			} finally {
 				if (pStatement != null) {
 			        try {
 			        	pStatement.close();
-						} catch (SQLException e) {}
+						} catch (SQLException e) {e.printStackTrace();}
 			        }
 			        if (connection != null) {
 			            try {
 			            	connection.close();
-						} catch (SQLException e) {}
+						} catch (SQLException e) {e.printStackTrace();}
 			        }
 			}
 		return i;
@@ -220,18 +224,19 @@ public class DataBaseImpl extends UnicastRemoteObject implements DataBaseService
 				i = pStatement.executeUpdate();
 				
 			} catch (Exception e){
+				e.printStackTrace();
 				i = ERROR;
 			} finally {
 				if (pStatement != null) {
 		        	
 			        try {
 			        	pStatement.close();
-						} catch (SQLException e) {}
+						} catch (SQLException e) {e.printStackTrace();}
 			        }
 			        if (connection != null) {
 			            try {
 			            	connection.close();
-						} catch (SQLException e) {}
+						} catch (SQLException e) {e.printStackTrace();}
 			        }
 			}
 		}
@@ -263,12 +268,12 @@ public class DataBaseImpl extends UnicastRemoteObject implements DataBaseService
 	        	
 		        try {
 						create.close();
-					} catch (SQLException e) {}
+					} catch (SQLException e) {e.printStackTrace();}
 		        }
 	        if (connection != null) {
 	            try {
 	            	connection.close();
-				} catch (SQLException e) {}
+				} catch (SQLException e) {e.printStackTrace();}
 	        }
 		}
 		return candidats;
@@ -291,18 +296,19 @@ public class DataBaseImpl extends UnicastRemoteObject implements DataBaseService
 				i = pStatement.executeUpdate();
 				
 			} catch (Exception e){
+				e.printStackTrace();
 				i = ERROR;
 			} finally {
 				if (pStatement != null) {
 		        	
 			        try {
 			        	pStatement.close();
-						} catch (SQLException e) {}
+						} catch (SQLException e) {e.printStackTrace();}
 			        }
 			        if (connection != null) {
 			            try {
 			            	connection.close();
-						} catch (SQLException e) {}
+						} catch (SQLException e) {e.printStackTrace();}
 			        }
 			}
 		}
@@ -322,17 +328,20 @@ public class DataBaseImpl extends UnicastRemoteObject implements DataBaseService
 				i = create.executeUpdate("DELETE FROM candidats");
 				
 			} catch (Exception e){
+				e.printStackTrace();
 				i = ERROR;
 			} finally {
 				if (create != null) {
 			        try {
 							create.close();
-						} catch (SQLException e) {}
+						} catch (SQLException e) {
+							e.printStackTrace();
+						}
 			        }
 		        if (connection != null) {
 		            try {
 		            	connection.close();
-					} catch (SQLException e) {}
+					} catch (SQLException e) {e.printStackTrace();}
 		        }
 			}
 		}
@@ -357,18 +366,19 @@ public class DataBaseImpl extends UnicastRemoteObject implements DataBaseService
 				
 				
 			} catch (Exception e){
+				e.printStackTrace();
 				i = ERROR;
 			} finally {
 				if (pStatement != null) {
 		        	
 			        try {
 			        	pStatement.close();
-						} catch (SQLException e) {}
+						} catch (SQLException e) {e.printStackTrace();}
 			        }
 			        if (connection != null) {
 			            try {
 			            	connection.close();
-						} catch (SQLException e) {}
+						} catch (SQLException e) {e.printStackTrace();}
 			        }
 			}
 		}
@@ -404,12 +414,12 @@ public class DataBaseImpl extends UnicastRemoteObject implements DataBaseService
 	        	
 		        try {
 						create.close();
-					} catch (SQLException e) {}
+					} catch (SQLException e) {e.printStackTrace();}
 		        }
 	        if (connection != null) {
 	            try {
 	            	connection.close();
-				} catch (SQLException e) {}
+				} catch (SQLException e) {e.printStackTrace();}
 	        }
 		}
 		
@@ -440,12 +450,12 @@ public class DataBaseImpl extends UnicastRemoteObject implements DataBaseService
 	        	
 		        try {
 						create.close();
-					} catch (SQLException e) {}
+					} catch (SQLException e) {e.printStackTrace();}
 		        }
 	        if (connection != null) {
 	            try {
 	            	connection.close();
-				} catch (SQLException e) {}
+				} catch (SQLException e) {e.printStackTrace();}
 	        }
 		}
 		
@@ -472,18 +482,20 @@ public class DataBaseImpl extends UnicastRemoteObject implements DataBaseService
 			i = pStatement.executeUpdate();
 			
 			
-		} catch (Exception e){i = ERROR;
+		} catch (Exception e){
+			e.printStackTrace();
+			i = ERROR;
 		} finally {
 			if (pStatement != null) {
 	        	
 		        try {
 		        	pStatement.close();
-					} catch (SQLException e) {}
+					} catch (SQLException e) {e.printStackTrace();}
 		        }
 		        if (connection != null) {
 		            try {
 		            	connection.close();
-					} catch (SQLException e) {}
+					} catch (SQLException e) {e.printStackTrace();}
 		        }
 		}
 		return i;
@@ -521,12 +533,12 @@ public class DataBaseImpl extends UnicastRemoteObject implements DataBaseService
 	        	
 		        try {
 						create.close();
-					} catch (SQLException e) {}
+					} catch (SQLException e) {e.printStackTrace();}
 		        }
 		        if (connection != null) {
 		            try {
 		            	connection.close();
-					} catch (SQLException e) {}
+					} catch (SQLException e) {e.printStackTrace();}
 		        }
 		}
 		return rezults;
@@ -572,18 +584,20 @@ public class DataBaseImpl extends UnicastRemoteObject implements DataBaseService
 	        
 	        }
 			
-		} catch (Exception e){i = ERROR;
+		} catch (Exception e){
+			e.printStackTrace();
+			i = ERROR;
 		} finally {
 			 if (pStatement != null) {
 		        	
 			        try {
 			        	pStatement.close();
-						} catch (SQLException e) {}
+						} catch (SQLException e) {e.printStackTrace();}
 			        }
 			        if (connection != null) {
 			            try {
 			            	connection.close();
-						} catch (SQLException e) {}
+						} catch (SQLException e) {e.printStackTrace();}
 			        }
 		}
 		return i;
@@ -617,18 +631,19 @@ public class DataBaseImpl extends UnicastRemoteObject implements DataBaseService
 			i = create.executeUpdate("UPDATE dates  SET beging_date = null, end_date = null WHERE date_id = '1'");
 			
 		} catch (Exception e){
+			e.printStackTrace();
 			i = ERROR;
 		} finally {
 			if (create != null) {
 	        	
 		        try {
 						create.close();
-					} catch (SQLException e) {}
+					} catch (SQLException e) {e.printStackTrace();}
 		        }
 	        if (connection != null) {
 	            try {
 	            	connection.close();
-				} catch (SQLException e) {}
+				} catch (SQLException e) {e.printStackTrace();}
 	        }
 		}
 		return i;
@@ -651,12 +666,12 @@ public class DataBaseImpl extends UnicastRemoteObject implements DataBaseService
 	        	
 		        try {
 						create.close();
-					} catch (SQLException e) {}
+					} catch (SQLException e) {e.printStackTrace();}
 		        }
 	        if (connection != null) {
 	            try {
 	            	connection.close();
-				} catch (SQLException e) {}
+				} catch (SQLException e) {e.printStackTrace();}
 	        }
 		}
 		
@@ -679,12 +694,12 @@ public class DataBaseImpl extends UnicastRemoteObject implements DataBaseService
 	        	
 		        try {
 						create.close();
-					} catch (SQLException e) {}
+					} catch (SQLException e) {e.printStackTrace();}
 		        }
 	        if (connection != null) {
 	            try {
 	            	connection.close();
-				} catch (SQLException e) {}
+				} catch (SQLException e) {e.printStackTrace();}
 	        }
 		}
 		
@@ -713,12 +728,12 @@ public class DataBaseImpl extends UnicastRemoteObject implements DataBaseService
 		        	
 			        try {
 							create.close();
-						} catch (SQLException e) {}
+						} catch (SQLException e) {e.printStackTrace();}
 			        }
 			        if (connection != null) {
 			            try {
 			            	connection.close();
-						} catch (SQLException e) {}
+						} catch (SQLException e) {e.printStackTrace();}
 			   }
 		}
 		return category;

@@ -58,7 +58,9 @@ public class RegistrationFrame extends JFrame implements ActionListener{
 	try {
 		((AbstractDocument)(surnameField.getDocument())).setDocumentFilter(
 				new MyDocumentFilter(20));
-	} catch (BadLocationException e) {}
+	} catch (BadLocationException e) {
+		e.printStackTrace();
+	}
 	box1.add(surnameLabel);
 	box1.add(Box.createHorizontalStrut(6));
 	box1.add(surnameField);
@@ -73,7 +75,9 @@ public class RegistrationFrame extends JFrame implements ActionListener{
 	try {
 		((AbstractDocument)(nameField.getDocument())).setDocumentFilter(
 				new MyDocumentFilter(20));
-	} catch (BadLocationException e) {}
+	} catch (BadLocationException e) {
+		e.printStackTrace();
+	}
 	box2.add(nameLabel);
 	box2.add(Box.createHorizontalStrut(6));
 	box2.add(nameField);
@@ -88,7 +92,9 @@ public class RegistrationFrame extends JFrame implements ActionListener{
 	try {
 		((AbstractDocument)(loginField.getDocument())).setDocumentFilter(
 				new MyDocumentFilter(20));
-	} catch (BadLocationException e) {}
+	} catch (BadLocationException e) {
+		e.printStackTrace();
+	}
 	box3.add(loginLabel);
 	box3.add(Box.createHorizontalStrut(6));
 	box3.add(loginField);

@@ -128,7 +128,7 @@ public class ServerFrame extends JFrame implements Runnable, ActionListener{
 			
 			
 		} catch (IOException e) {
-			
+			e.printStackTrace();
 			addMessage("Server Error: " + e.getMessage());
 			running = false;
 		}
@@ -180,7 +180,7 @@ private void hideFrame(){
 					
 					SystemTray.getSystemTray().add(trayIcon);
 				} catch (Exception e1) {
-					
+					e1.printStackTrace();
 					setVisible(true);
 				}
 			}else{
@@ -191,7 +191,7 @@ private void hideFrame(){
 					trayIcon.setToolTip("Сервер (Offline)");
 					SystemTray.getSystemTray().add(trayIcon);
 				} catch (Exception e1) {
-					
+					e1.printStackTrace();
 					setVisible(true);
 				}
 			}
@@ -217,6 +217,7 @@ private void hideFrame(){
 					trayIcon.setImage(image);
 					trayIcon.setToolTip("Сервер (Online)");
 				} catch (Exception e1) {
+					e1.printStackTrace();
 					setVisible(true);
 					SystemTray.getSystemTray().remove(trayIcon);	
 				}

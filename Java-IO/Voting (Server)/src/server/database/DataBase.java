@@ -27,6 +27,7 @@ public class DataBase {
 	private static Statement create;
 	private static PreparedStatement pStatement;
 	
+	private DataBase(){}
 	// получение соединения с СУБД
 	private static Connection getConnection() {
 		
@@ -37,6 +38,7 @@ public class DataBase {
 			Connection conn = DriverManager.getConnection(url, userName, new String(password));
 			return conn;
 		} catch(Exception e){
+			e.printStackTrace();
 			ServerFrame.addMessage("ERROR: Connecting to Database FALSE!");
 		}
 			//JOptionPane.showMessageDialog(null, "Связь с базой данных отсутствует!", "Ошибка подключения к БД", JOptionPane.WARNING_MESSAGE);}
@@ -83,6 +85,7 @@ public class DataBase {
 			b = true;
 			
 		} catch (Exception e) {
+			e.printStackTrace();
 			ServerFrame.addMessage("ERROR: Tables not created  on Database!");
 			//JOptionPane.showMessageDialog(null, "Ошибка созданния таблиц!", "Ошибка базы данных", JOptionPane.ERROR_MESSAGE);
 		}
@@ -91,12 +94,16 @@ public class DataBase {
 		        	
 			        try {
 							create.close();
-					} catch (SQLException e) {}
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
 			  }
 			  if (connection != null) {
 			        try {
 			            	connection.close();
-					} catch (SQLException e) {}
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
 			  }
 		}
 	      return b;
@@ -126,17 +133,22 @@ public class DataBase {
 			}
 		
 			
-		} catch (Exception e){e.printStackTrace();
+		} catch (Exception e){
+			e.printStackTrace();
 		} finally {
 			if (pStatement != null) {
 		        try {
 		        	pStatement.close();
-					} catch (SQLException e) {}
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
 			 }
 	        if (connection != null) {
 	            try {
 	            	connection.close();
-				} catch (SQLException e) {}
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 	        }
 		}
 		
@@ -164,17 +176,22 @@ public class DataBase {
 				
 	
 		
-			} catch (Exception e){i = ServerConection.ERROR; 
+			} catch (Exception e){e.printStackTrace();
+				i = ServerConection.ERROR; 
 			} finally {
 				if (pStatement != null) {
 			        try {
 			        	pStatement.close();
-						} catch (SQLException e) {}
+						} catch (SQLException e) {
+							e.printStackTrace();
+						}
 			        }
 			        if (connection != null) {
 			            try {
 			            	connection.close();
-						} catch (SQLException e) {}
+						} catch (SQLException e) {
+							e.printStackTrace();
+						}
 			        }
 			}
 		return i;
@@ -193,18 +210,24 @@ public class DataBase {
 			pStatement.setString(1, candidat);
 			i = pStatement.executeUpdate();
 			
-		} catch (Exception e){i = ServerConection.ERROR; 
+		} catch (Exception e){
+			e.printStackTrace();
+			i = ServerConection.ERROR; 
 		} finally {
 			if (pStatement != null) {
 	        	
 		        try {
 		        	pStatement.close();
-					} catch (SQLException e) {}
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
 		        }
 		        if (connection != null) {
 		            try {
 		            	connection.close();
-					} catch (SQLException e) {}
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
 		        }
 		}
 		return i;
@@ -229,17 +252,22 @@ public class DataBase {
 		        }
 		        return candidats;
 		} catch (Exception e){
+			e.printStackTrace();
 		} finally {
 			if (create != null) {
 	        	
 		        try {
 						create.close();
-					} catch (SQLException e) {}
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
 		        }
 	        if (connection != null) {
 	            try {
 	            	connection.close();
-				} catch (SQLException e) {}
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 	        }
 		}
 		return candidats;
@@ -259,18 +287,24 @@ public class DataBase {
 			pStatement.setString(1, candidat);
 			i = pStatement.executeUpdate();
 			
-		} catch (Exception e){i = ServerConection.ERROR;
+		} catch (Exception e){
+			e.printStackTrace();
+			i = ServerConection.ERROR;
 		} finally {
 			if (pStatement != null) {
 	        	
 		        try {
 		        	pStatement.close();
-					} catch (SQLException e) {}
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
 		        }
 		        if (connection != null) {
 		            try {
 		            	connection.close();
-					} catch (SQLException e) {}
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
 		        }
 		}
 		return i;
@@ -287,17 +321,23 @@ public class DataBase {
 			create = connection.createStatement();
 			i = create.executeUpdate("DELETE FROM candidats");
 			
-		} catch (Exception e){i = ServerConection.ERROR;
+		} catch (Exception e){
+			e.printStackTrace();
+			i = ServerConection.ERROR;
 		} finally {
 			if (create != null) {
 		        try {
 						create.close();
-					} catch (SQLException e) {}
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
 		        }
 	        if (connection != null) {
 	            try {
 	            	connection.close();
-				} catch (SQLException e) {}
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 	        }
 		}
 		return i;
@@ -385,18 +425,23 @@ public class DataBase {
 			
 			}			
 			
-		} catch (Exception e){e.printStackTrace();
+		} catch (Exception e){
+			e.printStackTrace();
 		} finally {
 			if (create != null) {
 	        	
 		        try {
 						create.close();
-					} catch (SQLException e) {}
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
 		        }
 	        if (connection != null) {
 	            try {
 	            	connection.close();
-				} catch (SQLException e) {}
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 	        }
 		}
 		
@@ -420,18 +465,23 @@ public class DataBase {
 			date =  new Date(endTS.getTime());
 			}			
 			
-		} catch (Exception e){e.printStackTrace();
+		} catch (Exception e){
+			e.printStackTrace();
 		} finally {
 			if (create != null) {
 	        	
 		        try {
 						create.close();
-					} catch (SQLException e) {}
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
 		        }
 	        if (connection != null) {
 	            try {
 	            	connection.close();
-				} catch (SQLException e) {}
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 	        }
 		}
 		
@@ -456,18 +506,24 @@ public class DataBase {
 			i = pStatement.executeUpdate();
 			
 			
-		} catch (Exception e){i = ServerConection.ERROR;
+		} catch (Exception e){
+			e.printStackTrace();
+			i = ServerConection.ERROR;
 		} finally {
 			if (pStatement != null) {
 	        	
 		        try {
 		        	pStatement.close();
-					} catch (SQLException e) {}
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
 		        }
 		        if (connection != null) {
 		            try {
 		            	connection.close();
-					} catch (SQLException e) {}
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
 		        }
 		}
 		return i;
@@ -499,18 +555,23 @@ public class DataBase {
 			}
 			
 			
-		} catch (Exception e){e.printStackTrace();
+		} catch (Exception e){
+			e.printStackTrace();
 		} finally {
 			if (create != null) {
 	        	
 		        try {
 						create.close();
-					} catch (SQLException e) {}
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
 		        }
 		        if (connection != null) {
 		            try {
 		            	connection.close();
-					} catch (SQLException e) {}
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
 		        }
 		}
 		return rezults;
@@ -527,18 +588,24 @@ public class DataBase {
 			create = connection.createStatement();
 			i = create.executeUpdate("UPDATE users  SET is_voted = '0'");
 			
-		} catch (Exception e){i = ServerConection.ERROR;
+		} catch (Exception e){
+			e.printStackTrace();
+			i = ServerConection.ERROR;
 		} finally {
 if (create != null) {
 	        	
 		        try {
 						create.close();
-					} catch (SQLException e) {}
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
 		        }
 	        if (connection != null) {
 	            try {
 	            	connection.close();
-				} catch (SQLException e) {}
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 	        }
 		}
 		return i;
@@ -560,12 +627,16 @@ if (create != null) {
 	        	
 		        try {
 						create.close();
-					} catch (SQLException e) {}
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
 		        }
 	        if (connection != null) {
 	            try {
 	            	connection.close();
-				} catch (SQLException e) {}
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 	        }
 		}
 		return i;
@@ -604,18 +675,24 @@ if (create != null) {
 	        
 	        }
 			
-		} catch (Exception e){i = ServerConection.ERROR;
+		} catch (Exception e){
+			e.printStackTrace();
+			i = ServerConection.ERROR;
 		} finally {
 			 if (pStatement != null) {
 		        	
 			        try {
 			        	pStatement.close();
-						} catch (SQLException e) {}
+						} catch (SQLException e) {
+							e.printStackTrace();
+						}
 			        }
 			        if (connection != null) {
 			            try {
 			            	connection.close();
-						} catch (SQLException e) {}
+						} catch (SQLException e) {
+							e.printStackTrace();
+						}
 			        }
 		}
 		return i;
@@ -643,12 +720,16 @@ if (create != null) {
 		        	
 			        try {
 							create.close();
-						} catch (SQLException e) {}
+						} catch (SQLException e) {
+							e.printStackTrace();
+						}
 			        }
 			        if (connection != null) {
 			            try {
 			            	connection.close();
-						} catch (SQLException e) {}
+						} catch (SQLException e) {
+							e.printStackTrace();
+						}
 			   }
 		}
 		return category;

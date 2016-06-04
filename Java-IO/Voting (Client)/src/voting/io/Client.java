@@ -18,7 +18,7 @@ public class Client {
 	 * Класс содержит клиентские запросы на сервер
 	 */
 	
-	 private static Socket server;
+	private static Socket server;
 	private static InputStream in;
 	private static InputStreamReader inReader;
 	private static OutputStream out;
@@ -29,6 +29,8 @@ public class Client {
 	public final static int OK = 1;
 	public final static int ERROR_ON_SERVER = 2;
 	public final static int ERROR_CONNECTION = 3;
+	
+	private Client(){}
 	
 	//запрос на вход
 	public static int enter (String login, char[] password){
@@ -51,8 +53,10 @@ public class Client {
 			i = OK;
 			server.close();
 		} catch (UnknownHostException e) {
+			e.printStackTrace();
 			i = ERROR_CONNECTION;
 		} catch (IOException e) {
+			e.printStackTrace();
 			i = ERROR_CONNECTION;
 		}
 		return i;
@@ -78,8 +82,10 @@ public class Client {
 			
 			server.close();
 		} catch (UnknownHostException e) {
+			e.printStackTrace();
 			i = ERROR_CONNECTION;
 		} catch (IOException e) {
+			e.printStackTrace();
 			i = ERROR_CONNECTION;
 		}
 
@@ -103,8 +109,10 @@ public class Client {
 			i = inReader.read();
 			server.close();
 		} catch (UnknownHostException e) {
+			e.printStackTrace();
 			i = ERROR_CONNECTION;
 		} catch (IOException e) {
+			e.printStackTrace();
 			i = ERROR_CONNECTION;
 		}
 		return i;
@@ -127,7 +135,9 @@ public class Client {
 			}
 			server.close();
 		} catch (UnknownHostException e) {
+			e.printStackTrace();
 		} catch (IOException e) {
+			e.printStackTrace();
 		}
 		return candidats;
 		
@@ -148,8 +158,10 @@ public class Client {
 			i = inReader.read();
 			server.close();
 		} catch (UnknownHostException e) {
+			e.printStackTrace();
 			i = ERROR_CONNECTION;
 		} catch (IOException e) {
+			e.printStackTrace();
 			i = ERROR_CONNECTION;
 		}
 		return i;
@@ -169,8 +181,10 @@ public class Client {
 			i = inReader.read();
 			server.close();
 		} catch (UnknownHostException e) {
+			e.printStackTrace();
 			i = ERROR_CONNECTION;
 		} catch (IOException e) {
+			e.printStackTrace();
 			i = ERROR_CONNECTION;
 		}
 		return i;
@@ -193,8 +207,10 @@ public class Client {
 			i = inReader.read();
 			server.close();
 		} catch (UnknownHostException e) {
+			e.printStackTrace();
 			i = ERROR_CONNECTION;
 		} catch (IOException e) {
+			e.printStackTrace();
 			i = ERROR_CONNECTION;
 		}
 		return i;
@@ -215,8 +231,10 @@ public class Client {
 			
 			server.close();
 		} catch (UnknownHostException e) {
+			e.printStackTrace();
 			i = ERROR_CONNECTION;
 		} catch (IOException e) {
+			e.printStackTrace();
 			i = ERROR_CONNECTION;
 		}
 		return i;
@@ -242,8 +260,10 @@ public class Client {
 			}
 			server.close();
 		} catch (UnknownHostException e) {
+			e.printStackTrace();
 			
 		} catch (IOException e) {
+			e.printStackTrace();
 			
 		}
 		return date;
@@ -269,8 +289,10 @@ public class Client {
 			}
 			server.close();
 		} catch (UnknownHostException e) {
+			e.printStackTrace();
 			
 		} catch (IOException e) {
+			e.printStackTrace();
 			
 		}
 		return date;
@@ -295,8 +317,10 @@ public class Client {
 				UserData.setLogin(newLogin);
 			server.close();
 		} catch (UnknownHostException e) {
+			e.printStackTrace();
 			i = ERROR_CONNECTION;
 		} catch (IOException e) {
+			e.printStackTrace();
 			i = ERROR_CONNECTION;
 		}
 		
@@ -321,9 +345,10 @@ public class Client {
 			}
 			server.close();
 		} catch (UnknownHostException e) {
+			e.printStackTrace();
 			
 		} catch (IOException e) {
-			
+			e.printStackTrace();
 		}
 		return rezults;
 		
@@ -344,8 +369,10 @@ public class Client {
 			i = inReader.read();
 			server.close();
 		} catch (UnknownHostException e) {
+			e.printStackTrace();
 			i = ERROR_CONNECTION;
 		} catch (IOException e) {
+			e.printStackTrace();
 			i = ERROR_CONNECTION;
 		}
 		

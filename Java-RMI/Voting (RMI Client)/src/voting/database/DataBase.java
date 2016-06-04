@@ -20,12 +20,15 @@ public class DataBase{
 	public final static int ERROR_ON_SERVER = 2;
 	public final static int CONNECTION_ERROR = 3;
 	
+	private DataBase(){}
 	
 	private static DataBaseService getDataBase() {
 		dataBase = null;
 		try {
 			dataBase = (DataBaseService) Naming.lookup("rmi://localhost:1099/DataService");
-		} catch (MalformedURLException | RemoteException | NotBoundException e) {}
+		} catch (MalformedURLException | RemoteException | NotBoundException e) {
+			e.printStackTrace();
+		}
 		return dataBase;
 	}
 	
@@ -41,6 +44,7 @@ public class DataBase{
 			user = dataBase.enter(login, password);
 			i = OK;
 		} catch (RemoteException e) {
+			e.printStackTrace();
 			i = CONNECTION_ERROR;	
 		}
 		else
@@ -58,6 +62,7 @@ public class DataBase{
 		try {
 			i = dataBase.registration(user, login, password);
 		} catch (Exception e) {
+			e.printStackTrace();
 			i = CONNECTION_ERROR;
 		}else
 			i = CONNECTION_ERROR;
@@ -73,6 +78,7 @@ public class DataBase{
 		try {
 			i = dataBase.addCandidat(login, candidat);
 		} catch (Exception e) {
+			e.printStackTrace();
 			i = CONNECTION_ERROR;
 			//JOptionPane.showMessageDialog(null, "Отсутсвует связь с сервером", "Ошибка соединения", JOptionPane.ERROR_MESSAGE);
 		}
@@ -102,6 +108,7 @@ public class DataBase{
 		try {
 			i = dataBase.removeCandidat(login, candidat);
 		} catch (Exception e) {
+			e.printStackTrace();
 			i = CONNECTION_ERROR;
 		}else
 			i = CONNECTION_ERROR;
@@ -117,6 +124,7 @@ public class DataBase{
 		try {
 			i = dataBase.removeAllCandidats(login);
 		} catch (Exception e) {
+			e.printStackTrace();
 			i = CONNECTION_ERROR;
 		}else
 			i = CONNECTION_ERROR;
@@ -132,6 +140,7 @@ public class DataBase{
 		try {
 			i = dataBase.setDate(login, beging_date, end_date);
 		} catch (Exception e) {
+			e.printStackTrace();
 			i = CONNECTION_ERROR;
 		}else
 			i = CONNECTION_ERROR;
@@ -157,7 +166,9 @@ public class DataBase{
 		if(dataBase != null)
 		try {
 			date = dataBase.getEndDate();
-		} catch (Exception e) {}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return date;
 	}
 	
@@ -169,6 +180,7 @@ public class DataBase{
 		try {
 			i = dataBase.changeLogin(oldLogin, newLogin, newPass, oldPass);
 		} catch (Exception e) {
+			e.printStackTrace();
 			i = CONNECTION_ERROR;
 		}
 		else
@@ -184,6 +196,7 @@ public class DataBase{
 		try {
 			rezults = dataBase.getRezults();
 		} catch (Exception e) {
+			e.printStackTrace();
 			JOptionPane.showMessageDialog(null, "Отсутсвует связь с сервером", "Ошибка соединения", JOptionPane.ERROR_MESSAGE);
 		}
 		
@@ -198,6 +211,7 @@ public class DataBase{
 		try {
 			i = dataBase.resetVoting(login);
 		} catch (Exception e) {
+			e.printStackTrace();
 			i = CONNECTION_ERROR;
 		}
 		else
@@ -214,6 +228,7 @@ public class DataBase{
 		try {
 			i = dataBase.voted(login, candidat);
 		} catch (Exception e) {
+			e.printStackTrace();
 			i = CONNECTION_ERROR;
 		}
 		else
