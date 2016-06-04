@@ -60,9 +60,7 @@ public class LoginPanel extends JPanel implements ActionListener{
 		try {
 			((AbstractDocument)(newLoginField.getDocument())).setDocumentFilter(
 					new MyDocumentFilter(20));
-		} catch (BadLocationException e) {
-			e.printStackTrace();
-		}
+		} catch (BadLocationException e) {}
 		box1.add(newLoginLabel);
 		box1.add(Box.createHorizontalStrut(6));
 		box1.add(newLoginField);
